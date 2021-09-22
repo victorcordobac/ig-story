@@ -91,14 +91,17 @@ function makeApiCall($endpoint, $type, $params)
 }
 
 
-function renderLayout($stories, $user, $token)
+function renderLayoutOld($stories, $user, $token)
 {
 	ob_start();
 
+?>
+<h5> Story </h5>
+<?php
 
 	foreach ($stories as $story) :
 		if ('VIDEO' == $story['media_info']['media_type']) :
-?>
+	?>
 <div>
     <video controls poster="<?php echo $story['media_info']['thumbnail_url']; ?>" style="max-width:300px">
         <source src="<?php echo $story['media_info']['media_url']; ?>" />
@@ -129,6 +132,15 @@ function renderLayout($stories, $user, $token)
 
 
 function renderLayoutPrueba($stories, $user, $token)
+{
+	ob_start();
+	get_template_part('my_form_template');
+	return ob_get_clean();
+}
+
+
+
+function renderLayout($stories, $user, $token)
 {
 	include dirname(__FILE__) . 'templates/layout.php';
 }
