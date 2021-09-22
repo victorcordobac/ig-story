@@ -33,11 +33,10 @@ function getNewToken($token)
 
 	// make the api call and get a response
 	$response = makeApiCall($endpoint, 'GET', $params);
-	echo_log($response['data']['access_token']);
 
 	//actualizar option de wordpress
-	//update_option("ig_token", $newToken, TRUE);
-
+	$newToken = $response['data']['access_token'];
+	update_option("ig_token", $newToken, TRUE);
 }
 
 
