@@ -17,8 +17,9 @@ $endpointSyntax = 'GET https://graph.facebook.com/v12.0/{ig-user-id}/stories';
  */
 function getNewToken($token)
 {
-	$appId = '615119479645071';
-	$appSecret = '9ce83249479ad3227b0f1e7a843cf2cb';
+	$appId = get_option("fb_app_id");
+	$appSecret = get_option("fb_app_secret");
+
 
 
 	$endpoint = 'https://graph.facebook.com/v12.0/oauth/access_token';

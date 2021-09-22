@@ -61,15 +61,40 @@ function carmelo_stories_options()
 
     <input type="hidden" name="action" value="update_instagram_settings" />
 
-    <h3><?php _e("DATOS INSTAGRAM", "instagram-api"); ?></h3>
+    <h1><?php _e("LAS HISTORIAS DE CARMELO", "instagram-api"); ?></h1>
+
+    <h3><?php _e("API de FACEBOOK", "instagram-api"); ?></h3>
     <p>
-        <label><?php _e("Instagram User Id", "instagram-api"); ?></label>
+        <label>
+            <i class="fa fa-instagram"></i>
+            <?php _e("Instagram User Id", "instagram-api"); ?>
+        </label>
         <input class="" type="text" name="ig_user" value="<?php echo get_option('ig_user'); ?>" />
     </p>
 
     <p>
-        <label><?php _e("Instagram accessToken", "instagram-api"); ?></label>
+        <label>
+            <i class="fa fa-facebook"></i>
+            <?php _e("Access Token", "instagram-api"); ?>
+        </label>
         <input class="" type="text" name="ig_token" value="<?php echo get_option('ig_token'); ?>" />
+    </p>
+
+    <h3><?php _e("APP de FACEBOOK", "instagram-api"); ?></h3>
+    <p>
+        <label>
+            <i class="fa fa-facebook"></i>
+            <?php _e("App ID", "instagram-api"); ?>
+        </label>
+        <input class="" type="text" name="fb_app_id" value="<?php echo get_option('fb_app_id'); ?>" />
+    </p>
+
+    <p>
+        <label>
+            <i class="fa fa-facebook"></i>
+            <?php _e("App Secret", "instagram-api"); ?>
+        </label>
+        <input class="" type="text" name="fb_app_secret" value="<?php echo get_option('fb_app_secret'); ?>" />
     </p>
 
     <input class="button button-primary" type="submit" value="<?php _e("Save", "instagram-api"); ?>" />
@@ -89,12 +114,16 @@ function instagram_handle_save()
     // Get the options that were sent
     $user = (!empty($_POST["ig_user"])) ? $_POST["ig_user"] : NULL;
     $token = (!empty($_POST["ig_token"])) ? $_POST["ig_token"] : NULL;
+    $appId = (!empty($_POST["fb_app_id"])) ? $_POST["fb_app_id"] : NULL;
+    $appSecret = (!empty($_POST["fb_app_secret"])) ? $_POST["fb_app_secret"] : NULL;
 
     // Validation would go here
 
     // Update the values
     update_option("ig_user", $user, TRUE);
     update_option("ig_token", $token, TRUE);
+    update_option("fb_app_id", $appId, TRUE);
+    update_option("fb_app_secret", $appSecret, TRUE);
 
     // Redirect back to settings page
     // The ?page=stories corresponds to the "slug" 
