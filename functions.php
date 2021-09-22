@@ -11,12 +11,6 @@
 // syntax for api call endpoint
 $endpointSyntax = 'GET https://graph.facebook.com/v12.0/{ig-user-id}/stories';
 
-//DATOS TIRONDOA
-//ACCESS TOKEN LONG LIVE = EAAIvcqoUI48BAPvE8BLXNb9o1IMznmGsm4sZBjmdHlWreYf67am4LJCWl5aDG4gmCpazGzH0n4Pw3zRctT4EvoFSqY4tbbALzsT7yeIzupCgy98bJNvZCAyZB021AgW85ZACyAaD7AcALUsMgNYMZCKjAlxMaFWLaVuNZAYu2oBwZDZD
-//FACEBOOK PAGE ID =   139474372901447
-//INSTAGRAM BUSSINESS ACOUNT ID = 17841444717919581
-//doc: https://developers.facebook.com/docs/instagram-api/getting-started/
-
 
 /**
  * RENOVAR LONG LIVE ACCESS TOKEN
@@ -27,11 +21,7 @@ function getNewToken($token)
 	$appSecret = '9ce83249479ad3227b0f1e7a843cf2cb';
 
 
-	$endpoint = 'https://graph.facebook.com/v12.0/oauth/access_token?  
-					grant_type=fb_exchange_token&          
-					client_id=' . $appId .
-		'&client_secret=' . $appSecret .
-		'&fb_exchange_token=' . $token;
+	$endpoint = 'https://graph.facebook.com/v12.0/oauth/access_token?grant_type=fb_exchange_token&client_id=' . $appId . '&client_secret=' . $appSecret . '&fb_exchange_token=' . $token;
 
 	$params = array(
 		'access_token' => $token
@@ -39,7 +29,7 @@ function getNewToken($token)
 
 	// make the api call and get a response
 	$response = makeApiCall($endpoint, 'GET', $params);
-	echo_log($response['data']);
+	echo_log($response['data']['access_token']);
 
 	//actualizar option de wordpress
 	//update_option("ig_token", $newToken, TRUE);
