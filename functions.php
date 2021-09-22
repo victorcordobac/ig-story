@@ -91,7 +91,7 @@ function makeApiCall($endpoint, $type, $params)
 }
 
 
-function renderLayout($stories)
+function renderLayoutOld($stories)
 {
 
 	foreach ($stories as $story) :
@@ -121,4 +121,10 @@ function renderLayout($stories)
 </a>
 <?php
 	endforeach;
+}
+
+
+function renderLayout($stories, $user, $token)
+{
+	include dirname(__FILE__) . 'templates/layout.php';
 }
