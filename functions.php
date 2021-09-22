@@ -9,11 +9,13 @@
  */
 
 // syntax for api call endpoint
-$endpointSyntax = 'GET https://graph.facebook.com/v11.0/{ig-user-id}/stories';
+$endpointSyntax = 'GET https://graph.facebook.com/v12.0/{ig-user-id}/stories';
 
 //DATOS TIRONDOA
-//$accessToken = EAAIvcqoUI48BAPFSjTRTJGDhwSLSVYl1UxtVPqhHXSAUK2WfM7tHghtBov5BqTDp6Ps1qZBxDM3VypD9KGElGgPEx5Svy89vtoujZA4ZBmqFae7KyUrQIfLIAsERQYeuO0RLsvy4XHxnYgMvydPl0gctZAcbffPcT4nZCOQE378D3tr9eOMufmz4Grca9HE0sYxYfxXNCon8kao5LK3gZB;
-//$userId=  139474372901447;
+//ACCESS TOKEN GENERAL = EAAIvcqoUI48BAHtyi60ua1nn8xWrKVpDqAmzsZAkzsOZBX6rL1Cuzzk42fXZBmuzFOVsRqmhQuYT7936I0EHsWZCN1KrOA7NqUclSCZCTB3DwsxkZCbt6tTB2vnc2lIEYGMNoHcMZAPoA4Fv8UsW5ZC6dOous2KbJjxZA8bqcdmD7XxWc3xG0PqF1gj2QepQuk03rAiUMsuTCc3ScZBbwp1S6x
+//FACEBOOK PAGE ID =   139474372901447
+//INSTAGRAM BUSSINESS ACOUNT ID = 17841444717919581
+//doc: https://developers.facebook.com/docs/instagram-api/getting-started/
 
 /**
  * Get a users stories
@@ -26,7 +28,7 @@ $endpointSyntax = 'GET https://graph.facebook.com/v11.0/{ig-user-id}/stories';
 function getUserStories($instagramAccountId, $accessToken)
 {
 	// actual endpoint with a media
-	$endpoint = 'https://graph.facebook.com/v11.0/' . $instagramAccountId . '/stories';
+	$endpoint = 'https://graph.facebook.com/v12.0/' . $instagramAccountId . '/stories';
 
 	$params = array( // parameters for the endpoint
 		'access_token' => $accessToken
@@ -34,6 +36,7 @@ function getUserStories($instagramAccountId, $accessToken)
 
 	// make the api call and get a response
 	$response = makeApiCall($endpoint, 'GET', $params);
+	//echo_log($response['data']);
 
 	// return data from the response
 	return $response['data']['data'];
@@ -50,7 +53,7 @@ function getUserStories($instagramAccountId, $accessToken)
 function getMediaInfo($media, $accessToken)
 {
 	// actual endpoint with a media
-	$endpoint = 'https://graph.facebook.com/v11.0/' . $media['id'];
+	$endpoint = 'https://graph.facebook.com/v12.0/' . $media['id'];
 
 	$params = array( // parameters for the endpoint
 		'fields' => 'caption,id,ig_id,media_product_type,media_type,media_url,owner,permalink,shortcode,thumbnail_url,timestamp,username',
@@ -101,59 +104,14 @@ function makeApiCall($endpoint, $type, $params)
 }
 
 
-function renderLayoutOld($stories, $user, $token)
-{
-	ob_start();
-
-?>
-<h5> Story </h5>
-<?php
-
-	foreach ($stories as $story) :
-		if ('VIDEO' == $story['media_info']['media_type']) :
-	?>
-<div>
-    <video controls poster="<?php echo $story['media_info']['thumbnail_url']; ?>" style="max-width:300px">
-        <source src="<?php echo $story['media_info']['media_url']; ?>" />
-    </video>
-</div>
-<?php
-		elseif ('IMAGE' == $story['media_info']['media_type']) :
-		?>
-<div>
-    <img src="<?php echo $story['media_info']['media_url']; ?>" style="max-width:300px" />
-</div>
-<?php
-		endif;
-		?>
-<div>
-    <b>
-        <?php echo $story['media_info']['username']; ?>
-    </b>
-</div>
-<a href="<?php echo $story['media_info']['permalink']; ?>" target="_blank">
-    View on Instagram
-</a>
-<?php
-	endforeach;
-
-	return ob_get_clean();
-}
-
-
-function renderLayoutPrueba($stories, $user, $token)
-{
-	ob_start();
-	get_template_part('my_form_template');
-	return ob_get_clean();
-}
-
-
+/**
+ * RENDER LAYOUT
+ */
 
 function renderLayout($stories, $user, $token)
 {
-	echo_log($user);
-	include dirname(__FILE__) . 'templates/layout.php';
+	//echo_log($user);
+	include dirname(__FILE__) . '/templates/layout.php';
 }
 
 //DEBUGGING

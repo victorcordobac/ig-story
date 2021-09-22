@@ -18,7 +18,9 @@
         <?php echo $story['media_info']['username']; ?>
     </b>
 </div>
-<a href="<?php echo $story['media_info']['permalink']; ?>" target="_blank">
-    View on Instagram
-</a>
+<button href="<?php echo $story['media_info']['permalink']; ?>" target="_blank" style="color: black;">
+    Ver en instagram
+    <i class="fa fa-instagram">
+    </i>
+</button>
 <?php endforeach; ?>

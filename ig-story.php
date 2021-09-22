@@ -128,11 +128,9 @@ function story_function($atts)
 
     unset($story);
 
-    echo_log($user);
+    //echo_log($user);
 
     return renderLayout($stories, $user, $token);
-
-    //return $user + ' '  + $token;
 }
 
 add_shortcode("carmelo_stories", "story_function");
