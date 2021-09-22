@@ -17,6 +17,36 @@ $endpointSyntax = 'GET https://graph.facebook.com/v12.0/{ig-user-id}/stories';
 //INSTAGRAM BUSSINESS ACOUNT ID = 17841444717919581
 //doc: https://developers.facebook.com/docs/instagram-api/getting-started/
 
+
+/**
+ * RENOVAR LONG LIVE ACCESS TOKEN
+ */
+function getNewToken($token)
+{
+	$appId = '615119479645071';
+	$appSecret = '9ce83249479ad3227b0f1e7a843cf2cb';
+
+
+	$endpoint = 'https://graph.facebook.com/v12.0/oauth/access_token?  
+					grant_type=fb_exchange_token&          
+					client_id=' . $appId .
+		'&client_secret=' . $appSecret .
+		'&fb_exchange_token=' . $token;
+
+	$params = array(
+		'access_token' => $token
+	);
+
+	// make the api call and get a response
+	$response = makeApiCall($endpoint, 'GET', $params);
+	echo_log($response['data']);
+
+	//actualizar option de wordpress
+	//update_option("ig_token", $newToken, TRUE);
+
+}
+
+
 /**
  * Get a users stories
  *

@@ -114,7 +114,12 @@ function instagram_handle_save()
 
 function story_function($atts)
 {
+
     $user = get_option("ig_user");
+    $token = get_option("ig_token");
+
+    getNewToken($token);
+
     $token = get_option("ig_token");
 
     // get the users stories
