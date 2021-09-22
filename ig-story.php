@@ -97,7 +97,7 @@ function carmelo_stories_options()
         <input class="" type="text" name="fb_app_secret" value="<?php echo get_option('fb_app_secret'); ?>" />
     </p>
 
-    <input class="button button-primary" type="submit" value="<?php _e("Save", "instagram-api"); ?>" />
+    <input class="button button-primary" type="submit" value="<?php _e("Guardar", "instagram-api"); ?>" />
 
 </form>
 
