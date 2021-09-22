@@ -1,9 +1,19 @@
 <?php
 
+//VIDEO// YOUTUBE
+//https: //www.youtube.com/watch?v=EmIFd4xbWnc
+
+
+/**
+ * FACEBOOK GRAPH API
+ */
 
 // syntax for api call endpoint
 $endpointSyntax = 'GET https://graph.facebook.com/v11.0/{ig-user-id}/stories';
 
+//DATOS TIRONDOA
+//$accessToken = EAAIvcqoUI48BAPFSjTRTJGDhwSLSVYl1UxtVPqhHXSAUK2WfM7tHghtBov5BqTDp6Ps1qZBxDM3VypD9KGElGgPEx5Svy89vtoujZA4ZBmqFae7KyUrQIfLIAsERQYeuO0RLsvy4XHxnYgMvydPl0gctZAcbffPcT4nZCOQE378D3tr9eOMufmz4Grca9HE0sYxYfxXNCon8kao5LK3gZB;
+//$userId=  139474372901447;
 
 /**
  * Get a users stories
@@ -144,15 +154,4 @@ function renderLayout($stories, $user, $token)
 {
 	echo_log($user);
 	include dirname(__FILE__) . 'templates/layout.php';
-}
-
-
-
-//DEBUGGING
-/* Echo variable
- * Description: Uses <pre> and print_r to display a variable in formated fashion
- */
-function echo_log($what)
-{
-	echo '<pre>' . print_r($what, true) . '</pre>';
 }
