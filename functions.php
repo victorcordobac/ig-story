@@ -21,10 +21,14 @@ function getNewToken($token)
 	$appSecret = '9ce83249479ad3227b0f1e7a843cf2cb';
 
 
-	$endpoint = 'https://graph.facebook.com/v12.0/oauth/access_token?grant_type=fb_exchange_token&client_id=' . $appId . '&client_secret=' . $appSecret . '&fb_exchange_token=' . $token;
+	$endpoint = 'https://graph.facebook.com/v12.0/oauth/access_token';
 
 	$params = array(
-		'access_token' => $token
+		'grant_type' => 'fb_exchange_token',
+		'client_id' => $appId,
+		'client_secret' => $appSecret,
+		'fb_exchange_token' => $token
+
 	);
 
 	// make the api call and get a response
