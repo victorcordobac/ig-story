@@ -91,8 +91,10 @@ function makeApiCall($endpoint, $type, $params)
 }
 
 
-function renderLayoutOld($stories)
+function renderLayout($stories, $user, $token)
 {
+	ob_start();
+
 
 	foreach ($stories as $story) :
 		if ('VIDEO' == $story['media_info']['media_type']) :
@@ -121,10 +123,12 @@ function renderLayoutOld($stories)
 </a>
 <?php
 	endforeach;
+
+	return ob_get_clean();
 }
 
 
-function renderLayout($stories, $user, $token)
+function renderLayoutPrueba($stories, $user, $token)
 {
 	include dirname(__FILE__) . 'templates/layout.php';
 }
