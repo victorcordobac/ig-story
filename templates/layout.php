@@ -15,8 +15,8 @@
     </div>
     <?php endif; ?>
     <div style="text-align:center">
-        <b>
-            <?php echo $story['media_info']['username']; ?>
+        <b style="color:white">
+            @<?php echo $story['media_info']['username']; ?>
         </b>
         <button href="<?php echo $story['media_info']['permalink']; ?>" target="_blank" style="color: black;">
             Ver en instagram
