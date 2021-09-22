@@ -142,5 +142,17 @@ function renderLayoutPrueba($stories, $user, $token)
 
 function renderLayout($stories, $user, $token)
 {
+	echo_log($user);
 	include dirname(__FILE__) . 'templates/layout.php';
+}
+
+
+
+//DEBUGGING
+/* Echo variable
+ * Description: Uses <pre> and print_r to display a variable in formated fashion
+ */
+function echo_log($what)
+{
+	echo '<pre>' . print_r($what, true) . '</pre>';
 }

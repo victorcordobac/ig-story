@@ -128,6 +128,7 @@ function story_function($atts)
 
     unset($story);
 
+    echo_log($user);
 
     return renderLayout($stories, $user, $token);
 
